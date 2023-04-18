@@ -4,10 +4,12 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
-Suggested to run a docker container with Ubuntu if running on Windows or IOS operation systems
-
 [VSCode](https://code.visualstudio.com/)
-[Vue plugins]
+Suggested to run a docker container with Ubuntu if running on Windows or IOS operation systems
+  Plugins:
+  - Vue
+  - Python
+ Make sure your Node.js is installed and up to date
 
 ## Customize configuration
 
