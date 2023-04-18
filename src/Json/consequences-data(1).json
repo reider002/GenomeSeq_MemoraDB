@@ -1,0 +1,135 @@
+[
+  {
+    "transcript_id": "ENST00000504915",
+    "aa_change": null,
+    "is_canonical": false,
+    "consequence_type": "downstream_gene_variant",
+    "annotation": {
+      "hgvsc": "",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "MODIFIER"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000257430",
+    "aa_change": "T1556Nfs*3",
+    "is_canonical": true,
+    "consequence_type": "frameshift_variant",
+    "annotation": {
+      "hgvsc": "c.4666dup",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "HIGH"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000507379",
+    "aa_change": null,
+    "is_canonical": false,
+    "consequence_type": "downstream_gene_variant",
+    "annotation": {
+      "hgvsc": "",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "MODIFIER"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000512211",
+    "aa_change": null,
+    "is_canonical": false,
+    "consequence_type": "downstream_gene_variant",
+    "annotation": {
+      "hgvsc": "",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "MODIFIER"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000508376",
+    "aa_change": "T1556Nfs*3",
+    "is_canonical": false,
+    "consequence_type": "frameshift_variant",
+    "annotation": {
+      "hgvsc": "c.4666dup",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "HIGH"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000502371",
+    "aa_change": null,
+    "is_canonical": false,
+    "consequence_type": "downstream_gene_variant",
+    "annotation": {
+      "hgvsc": "",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "MODIFIER"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  },
+  {
+    "transcript_id": "ENST00000508624",
+    "aa_change": null,
+    "is_canonical": false,
+    "consequence_type": "3_prime_UTR_variant",
+    "annotation": {
+      "hgvsc": "c.*3988dup",
+      "polyphen_impact": "",
+      "polyphen_score": null,
+      "sift_score": null,
+      "sift_impact": "",
+      "vep_impact": "MODIFIER"
+    },
+    "gene": {
+      "gene_id": "ENSG00000134982",
+      "symbol": "APC",
+      "gene_strand": 1
+    }
+  }
+]
