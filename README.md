@@ -1,47 +1,39 @@
-# GenomeSeq_MemoraDB
+# MemoraDB
 
-This template should help get you started developing with Vue 3 in Vite.
+### Configure Project for VS Code
 
-## Recommended IDE Setup
+1. Open the Command Palette (`Ctrl+Shift+P`) and run the command "CMake: Configure".
+2. Press `F5` or go to the Run view (`Ctrl+Shift+D`) and click the green "Run" button to start debugging `memora_server`.
 
-[VSCode](https://code.visualstudio.com/)
-### Docker Container Config
-Suggested to run a docker container with Ubuntu if running on Windows or IOS operation systems
-### Plugins
-  - Vue
-  - Python
-  - Make sure your Node.js is installed and up to date
+## Summary of Project Phase 1: Simple Proof of Concept (POC)
 
-## Customize configuration
+The goal of Phase 1 is to create a minimal working version of MemoraDB to demonstrate its core functionality. This phase focuses on implementing basic CRUD operations and a simple communication protocol between the client and server.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Design Architecture and Use-Case for Phase 1:
 
-## Project Setup
+The architecture for Phase 1 consists of a server program and a client library. The server program is responsible for managing an in-memory data store, processing client requests, and performing CRUD operations. The client library provides an API that users can utilize to perform CRUD operations on the server's data store. The client and server communicate using a basic protocol with a predefined message format.
 
-```sh
-npm install
-```
+This simple proof of concept can be used as a foundation for a more feature-rich and scalable database system. In Phase 1, MemoraDB can be employed in small-scale applications or prototypes that require a lightweight in-memory database for storing and retrieving data.
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
+### Background Information:
 
-### Compile and Minify for Production
+To understand the technology, design patterns, and programming concepts applied in this phase, the following background information is needed:
 
-```sh
-npm run build
-```
+- C Programming Language: Knowledge of the C programming language, including syntax, data structures, and memory management, is essential for implementing the server program and client library.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+- Sockets and IPC: Understanding of sockets and Inter-Process Communication (IPC) mechanisms, such as message queues, is necessary for establishing communication between the client and server.
 
-```sh
-npm run test:unit
-```
+- Data Structures: Familiarity with basic data structures, such as hash tables or balanced trees, is required for implementing the in-memory data store.
 
-### Lint with [ESLint](https://eslint.org/)
+- Client-Server Architecture: Knowledge of the client-server architectural pattern is crucial for designing the communication and interaction between the client library and server program.
 
-```sh
-npm run lint
-```
+### Feature Functionality and Real-World Scenario:
+
+After completing Phase 1, MemoraDB will provide the following functionalities:
+
+- Basic CRUD operations: Create, Read, Update, and Delete records in the in-memory data store.
+
+- Simple communication protocol: A predefined message format for communication between the client and server.
+
+- Client library API: An API that users can leverage to perform CRUD operations on the server's data store.

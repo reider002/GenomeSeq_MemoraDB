@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Server",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/server/memora_server",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: Build Memora Project"
+        },
+        {
+            "name": "Debug Client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/client/memora_client",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: Build Memora Project"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Debug Server/Client",
+            "configurations": ["Debug Server", "Debug Client"]
+        }
+    ]
+}

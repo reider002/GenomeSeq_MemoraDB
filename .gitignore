@@ -1,28 +1,24 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Ignore build output and temporary files
+build/
+*.o
+*.so
+*.a
+*.exe
+*.out
 
-node_modules
+# Ignore CMake-generated files
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# Ignore compiled and generated files from the Check testing library
+*.check
+
+# Ignore any user-specific or system-specific files
+*.swp
+*.swo
+*.swn
+*~
 .DS_Store
-dist
-dist-ssr
-coverage
-*.local
-
-/cypress/videos/
-/cypress/screenshots/
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+*.hid
