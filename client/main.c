@@ -33,8 +33,8 @@ int main()
         fprintf(stderr, "Failed to connect to MemoraDB server after 5 attempts\n");
         return 1;
     }
-    
-    printf("\n0=Exit, 1=Create, 2=Read, 3=Update, 4=Delete\n");
+
+    printf("\n0=Close Connection, 1=Create, 2=Read, 3=Update, 4=Delete, 5=Reconnect\n");
 
     while (b == 1)
     {
@@ -55,14 +55,21 @@ int main()
         }
         else if (line == 1)
         {
-            if (memora_create(handle, "key1", "value1") == 0)
+            printf("Give me a key: ");
+            char kv[31];
+            scanf("%s", kv);
+            printf("\nGive me a value: ");
+            char value[63];
+            scanf("%s", value);
+            if (memora_create(handle, kv, value) == 0)
             {
-                printf("Create: key1 => value1\n");
+                printf("Create: %s => %s\n", kv, value);
             }
             else
             {
                 printf("Failed to create key1\n");
             }
+            line = 5;
         }
         else if (line == 2)
         {
@@ -78,25 +85,52 @@ int main()
         }
         else if (line == 3)
         {
-            // Test update operation
-            if (memora_update(handle, "key1", "new_value1") == 0)
+            printf("Give me a key: ");
+            char kv[31];
+            scanf("%s", kv);
+            printf("\nGive me a value: ");
+            char value[63];
+            scanf("%s", value);
+            if (memora_update(handle, kv, value) == 0)
             {
-                printf("Update: key1 => new_value1\n");
+                printf("Update: %s => %s\n", kv, value);
             }
             else
             {
-                printf("Failed to update key1\n");
+                printf("Failed to update %s\n", kv);
             }
         }
         else if (line == 4)
         {
-            if (memora_delete(handle, "key1") == 0)
+            printf("Give me a key: ");
+            char kv[31];
+            scanf("%s", kv);
+            if (memora_delete(handle, kv) == 0)
             {
-                printf("Delete: key1\n");
+                printf("Delete: %s\n", kv);
             }
             else
             {
-                printf("Failed to delete key1\n");
+                printf("Failed to delete %s\n", kv);
+            }
+        }
+        else if (line == 9)
+        {
+            void *handle = NULL;
+            int retries = 0;
+            while (!handle && retries < 5)
+            {
+                handle = memora_connect(server_address, port);
+                if (!handle)
+                {
+                    retries++;
+                    fprintf(stderr, "Failed to connect to MemoraDB server at %s:%d (attempt %d)\n", server_address, port, retries);
+                    if (retries < 5)
+                    {
+                        // Wait for 6 seconds before retrying
+                        sleep(6);
+                    }
+                }
             }
         }
     }
