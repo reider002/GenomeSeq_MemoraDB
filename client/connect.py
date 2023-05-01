@@ -1,5 +1,6 @@
 import socket
 import requests
+from prettytable import PrettyTable
 
 def send_command(sock, command):
     sock.sendall(command.encode('utf-8'))
@@ -35,42 +36,24 @@ def main():
                 exon_end = exon['end']
                 exons.append((exon_start, exon_end))
 
-            # Print the exon information
+            # Put the exon information into the database
             print(f'Exon information for gene {gene_id}:')
             for i, exon in enumerate(exons):
-                print(f'Exon {i + 1}: start={exon[0]}, end={exon[1]}')
-
-            # Create a record with the key exon_info and the value of the exons list as its content
-            command = f'CREATE exon_info {exons}\n'
-            response = send_command(sock, command)
+                command = f'CREATE exon{i} {exons[i][0]},{exons[i][1]}'
+                response = send_command(sock, command)
+                #print(command)
             print("Create: ", response)
         else:
             # Handle errors
             print(f'Error: {response.status_code} - {response.reason}')
 
-        # Create a record - TODO: bug fix
-        response = send_command(sock, 'CREATE key1 value1\n')
-        print("Create: ", response)
-
         # Read a record
-        response = send_command(sock, 'READ key1\n')
+        response = send_command(sock, 'READ exon93\n')
         print("Read: ", response)
-
-        # Update a record
-        response = send_command(sock, 'UPDATE key1 new_value1\n')
-        print("Update: ", response)
-
-        # Read the updated record
-        response = send_command(sock, 'READ key1\n')
-        print("Read: ", response)
-
-        # Delete a record
-        response = send_command(sock, 'DELETE key1\n')
-        print("Delete: ", response)
-
-        # Try to read the deleted record
-        response = send_command(sock, 'READ key1\n')
-        print("Read: ", response)        
+        exon_table = PrettyTable()
+        exon_table.field_names = ['Exon Number','Start','End']
+        exon_table.add_row([93, response.split(' ')[1].split(',')[0], response.split(' ')[1].split(',')[1]])
+        print(exon_table)
 
         # Close the connection
         send_command(sock, 'EXIT\n')
