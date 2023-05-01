@@ -6,10 +6,36 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <semaphore.h>
+#include <pthread.h>
 #include "memora_server.h"
 
 KeyValuePair *data_store = NULL;
 size_t data_store_size = 0;
+pthread_t thread_id;
+
+int thread_func(char* method) 
+{
+    char *func_name;
+    if(strcmp(method, "EXIT")) 
+    {
+        return;
+    }else if (strcmp(method, "CREATE")) {
+        func_name = "create_record";
+    }  else if(strcmp(method, "UPDATE")) {
+        func_name = "update_record";
+    } else if(strcmp(method, "DELETE")) {
+        func_name = "delete_record";
+    } else {
+        printf("Enter valid instruction --> CREATE, READ, UPDATE, DELETE");
+        return "-1";
+    }
+
+    pthread_create(&thread_id, NULL, func_name, NULL);
+    sleep(1);
+    pthread_join(thread_id, NULL);
+    return 0;
+}
 
 void init_data_store()
 {
@@ -61,12 +87,14 @@ char *read_record(const char *key)
     {
         return NULL;
     }
-    return strdup(data_store[index].value);
+    char *string = strdup(data_store[index].value);
+    return *string;
 }
 
 int update_record(const char *key, const char *value)
 {
     int index = find_key(key);
+
     if (index == -1)
     {
         return -1;
@@ -112,7 +140,7 @@ int handle_client(int client_socket)
     }
     else if (strcmp(operation, "CREATE") == 0 && ret == 3)
     {
-        if (create_record(key, value) == 0)
+        if (thread_func(operation) == 0)
             snprintf(response, sizeof(response), "OK");
         else
             snprintf(response, sizeof(response), "ERROR: Key already exists");
@@ -127,14 +155,14 @@ int handle_client(int client_socket)
     }
     else if (strcmp(operation, "UPDATE") == 0 && ret == 3)
     {
-        if (update_record(key,value) == 0)
+        if (thread_func(operation) == 0)
             snprintf(response, sizeof(response), "OK");
         else
             snprintf(response, sizeof(response), "ERROR: Key not found");
     }
     else if (strcmp(operation, "DELETE") == 0 && ret == 2)
     {
-        if (delete_record(key) == 0)
+        if (thread_func(operation) == 0)
             snprintf(response, sizeof(response), "OK");
         else
             snprintf(response, sizeof(response), "ERROR: Key not found");
@@ -152,7 +180,7 @@ void run_server(uint16_t port)
 {
     int server_socket, client_socket;
     struct sockaddr_in server_address, client_address;
-
+    
     socklen_t client_address_length;
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -211,3 +239,4 @@ void start_server()
     run_server(port);
     free_data_store();
 }
+
